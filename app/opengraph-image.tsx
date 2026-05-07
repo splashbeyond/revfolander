@@ -8,9 +8,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 /**
- * Programmatic OG image. Dark canvas, aurora moment, oversized headline.
- * The pinwheel logo is read from public/ at request time and inlined as
- * a data URI so next/og's renderer can include it.
+ * Programmatic OG image that centers the Revfo logo on a dark
+ * aurora background so iMessage/social previews show brand-first.
  */
 export default async function OpengraphImage() {
   const logoBytes = readFileSync(join(process.cwd(), "public", "logo.png"));
@@ -23,9 +22,8 @@ export default async function OpengraphImage() {
           height: "100%",
           background: "#0A0A0B",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 64,
+          alignItems: "center",
+          justifyContent: "center",
           position: "relative",
           fontFamily: "sans-serif",
           color: "#FAFAFA",
@@ -61,86 +59,39 @@ export default async function OpengraphImage() {
           }}
         />
 
-        {/* Brand */}
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 14,
             position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 420,
+            height: 420,
+            borderRadius: 56,
+            border: "2px solid rgba(199, 112, 240, 0.45)",
+            background:
+              "linear-gradient(145deg, rgba(31,31,34,0.9), rgba(20,20,22,0.82))",
+            boxShadow:
+              "0 24px 60px -24px rgba(0,0,0,0.7), 0 0 80px -18px rgba(91,141,239,0.45)",
+            backdropFilter: "blur(14px)",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoDataUri} width={40} height={40} alt="" />
           <div
             style={{
-              fontSize: 32,
-              fontWeight: 500,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Revfo
-          </div>
-        </div>
-
-        {/* Headline */}
-        <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              fontSize: 22,
-              letterSpacing: "0.16em",
-              textTransform: "uppercase",
-              color: "#9494A0",
-              marginBottom: 28,
-            }}
-          >
-            Growth engine for local businesses
-          </div>
-          <div
-            style={{
-              fontSize: 96,
-              fontWeight: 500,
-              lineHeight: 0.95,
-              letterSpacing: "-0.03em",
-              maxWidth: 1080,
+              width: 320,
+              height: 320,
+              borderRadius: 40,
               display: "flex",
-              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              background:
+                "radial-gradient(circle at 50% 40%, rgba(199,112,240,0.2), rgba(31,31,34,0.2) 55%, rgba(10,10,11,0.2) 100%)",
             }}
           >
-            <span>Get to the top of Google.</span>
-            <span style={{ fontStyle: "italic", fontWeight: 400 }}>
-              Stay there.
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logoDataUri} width={240} height={240} alt="Revfo logo" />
           </div>
-          <div
-            style={{
-              marginTop: 32,
-              fontSize: 26,
-              lineHeight: 1.4,
-              color: "#9494A0",
-              maxWidth: 880,
-            }}
-          >
-            We build your website, run your SEO, and bring in your reviews. You
-            run your business.
-          </div>
-        </div>
-
-        {/* Footer line */}
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            color: "#6B6B74",
-            fontSize: 18,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-          }}
-        >
-          <span>revfo.com</span>
-          <span>Websites · SEO · Reviews</span>
         </div>
       </div>
     ),

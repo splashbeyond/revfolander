@@ -58,6 +58,14 @@ export const metadata: Metadata = {
       "Websites, SEO, and reviews. One bundle. Done for you. Get to the top of Google.",
     siteName: "Revfo",
     locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Revfo logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -65,6 +73,7 @@ export const metadata: Metadata = {
     description:
       "Websites, SEO, and reviews. One bundle. Done for you. Get to the top of Google.",
     creator: "@revfo",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -78,7 +87,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: ["/logo.png"],
+    apple: [{ url: "/logo.png" }],
   },
 };
 
@@ -95,7 +106,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Revfo",
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.ico`,
+  logo: `${SITE_URL}/logo.png`,
   sameAs: [
     "https://twitter.com/revfo",
     "https://www.linkedin.com/company/revfo",
